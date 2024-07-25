@@ -11,7 +11,7 @@ resource "aws_secretsmanager_secret" "master_user_secret" {
 
 resource "aws_secretsmanager_secret_version" "master_user_secret_version" {
   secret_id     = aws_secretsmanager_secret.master_user_secret.id
-  secret_string = "redis://${aws_elasticache_replication_group.cache_cluster.primary_endpoint_address}:${var.cache_port}"
+  secret_string = "${aws_elasticache_replication_group.cache_cluster.primary_endpoint_address}:${var.cache_port}"
 
   depends_on = [
     aws_elasticache_replication_group.cache_cluster
