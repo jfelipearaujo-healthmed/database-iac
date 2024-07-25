@@ -11,7 +11,7 @@ resource "aws_secretsmanager_secret" "master_user_secret" {
 
 resource "aws_secretsmanager_secret_version" "master_user_secret_version" {
   secret_id     = aws_secretsmanager_secret.master_user_secret.id
-  secret_string = aws_elasticache_replication_group.cache_cluster.primary_endpoint_address
+  secret_string = "redis://${aws_elasticache_replication_group.cache_cluster.primary_endpoint_address}:${var.cache_port}"
 
   depends_on = [
     aws_elasticache_replication_group.cache_cluster
@@ -36,7 +36,9 @@ resource "aws_iam_policy" "cache_secret_policy" {
 }
 
 resource "aws_iam_role_policy_attachment" "cache_secret_policy_attachment" {
-  role       = "${var.cache_name}-service-account-role"
+  for_each = { for ns in var.services : ns => ns }
+
+  role       = "${each.value}-account-role"
   policy_arn = aws_iam_policy.cache_secret_policy.arn
 
   depends_on = [
