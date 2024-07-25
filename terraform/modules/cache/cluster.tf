@@ -6,6 +6,7 @@ resource "aws_elasticache_replication_group" "cache_cluster" {
   port                 = var.cache_port
 
   automatic_failover_enabled = true
+  transit_encryption_enabled = true
 
   security_group_ids = [aws_security_group.cache_subnet_group.id]
   subnet_group_name  = aws_elasticache_subnet_group.cache_subnet_group.name

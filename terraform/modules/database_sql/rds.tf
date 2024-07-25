@@ -19,4 +19,6 @@ resource "aws_db_instance" "db" {
   publicly_accessible = false
 
   deletion_protection = false
+
+  backup_retention_period = 1
 }
