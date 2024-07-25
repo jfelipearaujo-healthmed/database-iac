@@ -36,7 +36,9 @@ resource "aws_iam_policy" "db_secret_policy" {
 }
 
 resource "aws_iam_role_policy_attachment" "db_secret_policy_attachment" {
-  role       = "${var.db_name}-service-account-role"
+  for_each = { for ns in var.services : ns => ns }
+
+  role       = "${each.value}-account-role"
   policy_arn = aws_iam_policy.db_secret_policy.arn
 
   depends_on = [

@@ -20,6 +20,7 @@ No requirements.
 | <a name="input_db_port"></a> [db\_port](#input\_db\_port) | The port the database will listen on | `number` | n/a | yes |
 | <a name="input_db_username"></a> [db\_username](#input\_db\_username) | The username for the database | `string` | n/a | yes |
 | <a name="input_region"></a> [region](#input\_region) | The default region to use for AWS | `string` | n/a | yes |
+| <a name="input_services"></a> [services](#input\_services) | The services to attach the policies to | `list(string)` | n/a | yes |
 | <a name="input_vpc_name"></a> [vpc\_name](#input\_vpc\_name) | The name of the VPC | `string` | n/a | yes |
 ## Modules
 
