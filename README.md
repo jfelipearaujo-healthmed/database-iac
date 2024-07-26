@@ -1,24 +1,30 @@
 # Database IaC
 
-Repository responsible to provisioning the application databases (SQL and Cache) in AWS.
+Repositório responsável pelo provisionamento dos bancos de dados da aplicação (SQL e Cache) na AWS.
 
-# Local Development
+# Diagrama de Componentes
 
-## Requirements
+O diagrama de componentes abaixo representa de forma geral o que está sendo provisionado no projeto:
+
+![architecture](./docs/architecture.svg)
+
+# Desenvolvimento Local
+
+## Requisitos
 
 - [Terraform](https://www.terraform.io/downloads.html)
 - [Terraform Docs](https://github.com/terraform-docs/terraform-docs)
 - [AWS CLI](https://aws.amazon.com/cli/)
 
-## Manual deployment
+## Implantação manual
 
-### Attention
+### Atenção
 
-Before deploying the databases, make sure to set the `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` environment variables.
+Antes de implantar o cluster, certifique-se de definir as variáveis ​​de ambiente `AWS_ACCESS_KEY_ID` e `AWS_SECRET_ACCESS_KEY`.
 
-Be aware that this process will take a few minutes (~20 minutes) to be completed.
+Esteja ciente de que esse processo levará alguns minutos (~20 minutos) para ser concluído.
 
-To deploy the databases manually, run the following commands in order:
+Para implantar o cluster manualmente, execute os seguintes comandos em ordem:
 
 ```bash
 make init
@@ -26,17 +32,17 @@ make check # this will execute fmt, validate and plan
 make apply
 ```
 
-To destroy the databases, run the following command:
+Para destruir o cluster, execute o seguinte comando:
 
 ```bash
 make destroy
 ```
 
-## Automated deployment
+## Implantação Automatizada
 
-The automated deployment is triggered by a GitHub Action.
+A implantação automatizada é acionada por uma GitHub Action.
 
-# Provisioning
+# Provisionamento
 <!-- BEGIN_TF_DOCS -->
 
 ## Requirements
@@ -71,6 +77,6 @@ No resources.
 No outputs.
 <!-- END_TF_DOCS -->
 
-# License
+# Licença
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+Este projeto é licenciado sob a Licença MIT - veja o arquivo [LICENSE](LICENSE) para detalhes.
